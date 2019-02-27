@@ -87,6 +87,10 @@ public class MenuPrincipalActiv extends AppCompatActivity
             transaccion.replace(R.id.fragContenedor,fragTexto);
             transaccion.commit();
         } else if (id == R.id.nav_descarga_imagen) {
+            DescargaImagenFrag fragImagen= new DescargaImagenFrag();
+            FragmentTransaction transaccion = getSupportFragmentManager().beginTransaction();
+            transaccion.replace(R.id.fragContenedor,fragImagen);
+            transaccion.commit();
 
         } else if (id == R.id.nav_descarga_json) {
 
