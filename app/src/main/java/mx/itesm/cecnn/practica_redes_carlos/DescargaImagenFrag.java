@@ -1,6 +1,7 @@
 package mx.itesm.cecnn.practica_redes_carlos;
 
 
+import android.app.ProgressDialog;
 import android.graphics.Bitmap;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
@@ -21,7 +22,7 @@ import com.androidnetworking.interfaces.BitmapRequestListener;
 public class DescargaImagenFrag extends Fragment {
 
     private ImageView ivContenedor;
-
+    private ProgressDialog esperando;
 
     @Override
     public void onStart() {
@@ -30,18 +31,29 @@ public class DescargaImagenFrag extends Fragment {
         AndroidNetworking.initialize(getContext());
     }
 
+    private void mostrarCuadroEsperando(){
+        this.esperando=new ProgressDialog(getContext());
+        esperando.setProgressStyle(ProgressDialog.STYLE_SPINNER);
+        esperando.setIndeterminate(true);
+        esperando.setCanceledOnTouchOutside(false);
+        esperando.show();
+    }
+
     @Override
     public void onResume() {
         super.onResume();
         String url="https://upload.wikimedia.org/wikipedia/commons/d/dd/Big_%26_Small_Pumkins.JPG";
+        mostrarCuadroEsperando();
         AndroidNetworking.get(url).build().getAsBitmap(new BitmapRequestListener() {
             @Override
             public void onResponse(Bitmap response) {
                 ivContenedor.setImageBitmap(response);
+                esperando.dismiss();
             }
 
             @Override
             public void onError(ANError anError) {
+                esperando.dismiss();
                 Toast.makeText(getContext(), "Error en la descarga: "+anError.getErrorCode(), Toast.LENGTH_SHORT).show();
             }
         });
