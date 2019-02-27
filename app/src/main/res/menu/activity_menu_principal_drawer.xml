@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    tools:showIn="navigation_view">
+
+    <group android:checkableBehavior="single">
+        <item
+            android:id="@+id/nav_descarga_Texto"
+            android:icon="?android:attr/actionModePasteDrawable"
+            android:title="Descarga Texto" />
+        <item
+            android:id="@+id/nav_descarga_imagen"
+            android:icon="@drawable/ic_menu_gallery"
+            android:title="Descarga Imagen" />
+    </group>
+
+    <item android:title="Webservice">
+        <menu>
+            <item
+                android:id="@+id/nav_descarga_json"
+                android:icon="@android:drawable/ic_input_get"
+                android:title="Libros JSON" />
+        </menu>
+    </item>
+
+</menu>
