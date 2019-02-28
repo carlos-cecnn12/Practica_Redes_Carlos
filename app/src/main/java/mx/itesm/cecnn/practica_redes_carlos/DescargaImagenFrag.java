@@ -35,6 +35,7 @@ public class DescargaImagenFrag extends Fragment {
         this.esperando=new ProgressDialog(getContext());
         esperando.setProgressStyle(ProgressDialog.STYLE_SPINNER);
         esperando.setIndeterminate(true);
+        esperando.setMessage("Descargando...");
         esperando.setCanceledOnTouchOutside(false);
         esperando.show();
     }
